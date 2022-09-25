@@ -1,0 +1,61 @@
+@import './color.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::before {
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $font_color;
+  border-radius: 100px;
+}
+
+body{
+  font-size: 16px;
+  font-family: "Yu Gothic UI", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $font_color;
+}
+
+.container {
+  max-width: 110vmin;
+  margin:auto;
+}
+
+.flex {
+  display: flex;
+}
+
+article {
+  margin: 1em;
+}
+
+a, a:visited {
+  color: $white;
+}
+
+.copyright{
+  margin: 1.9em .5em 1em .5em;
+  > p {
+    font-size: .8em;
+    letter-spacing: .09em;
+    text-align: center;
+  }
+}

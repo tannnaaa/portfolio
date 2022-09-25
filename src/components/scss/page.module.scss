@@ -1,0 +1,70 @@
+@import './color.scss';
+
+.top {
+  width: 100%;
+  height: 70vh;
+  background-color: $main_color;
+}
+
+.line {
+  width: 1.5em;
+  height: 60vmin;
+  background-color: $white;
+  margin-right: 1.5em;
+  &:nth-child(2){
+    width: 3.5em;
+    height: 25vmin;
+  }
+}
+
+.title {
+  letter-spacing: .09em;
+}
+
+.border {
+  margin: 3em 0;
+  border-bottom: 0.3px solid $font_color;
+}
+
+.sentence_block{
+  margin: 1.5em;
+}
+
+.sentence {
+  letter-spacing: .09em;
+  line-height: 2;
+}
+
+.product_block{
+  flex: 1;
+  height: 15em;
+  margin: 1.5em .5em;
+  background-color: $sub_color;
+  > div{
+    margin: 1em 1.5em 1.5em 1.5em;
+    color: $white;
+  }
+}
+
+.skill_block{
+  margin: 1em;
+}
+
+.small{
+  margin: 1em 0;
+  font-size: .75em;
+  text-align: end;
+}
+
+@media screen and (max-width:680px) {
+  .display{
+    display: none;
+  }
+  .row_reverse {
+    flex-direction: row-reverse;
+  }
+
+  .wrap{
+    flex-wrap: wrap;
+  }
+}
