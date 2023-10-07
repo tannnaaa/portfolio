@@ -1,5 +1,6 @@
 import * as React from "react";
 const page = require("../components/scss/page.module.scss");
+import { Radar, Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -13,8 +14,6 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import { Radar, Bar } from 'react-chartjs-2';
-import { basename } from "path";
 
 ChartJS.register(
   RadialLinearScale,
@@ -35,7 +34,7 @@ interface skillModel {
   usable: number,
 };
 
-const langSkill: { [title: string]: skillModel } = {
+const LangSkill: { [title: string]: skillModel } = {
   JavaScript: {
     readable: 10,
     canWrite: 8,
@@ -66,20 +65,29 @@ const langSkill: { [title: string]: skillModel } = {
     canWrite: 4,
     usable: 3
   },
+  ShellScript: {
+    readable: 4,
+    canWrite: 3,
+    usable: 4
+  },
 };
 
-const langColor: {[title: string]: string} = {
+const LangColor: {[title: string]: string} = {
   JavaScript: '#F7DF1E',
   TypeScript: '#3178C6',
   HTML5: '#E34F26',
   'C#': '#239120',
   CSS3: '#1572B6',
   Python: '#3776AB',
+  ShellScript: '#000',
 };
 
-const frameWorkSkill: { [title: string]: skillModel } = {
+const FrameWorkSkill: { [title: string]: skillModel } = {
   Git: {
     usable: 7
+  },
+  Docker: {
+    usable: 5
   },
   Angular: {
     usable: 5
@@ -89,6 +97,9 @@ const frameWorkSkill: { [title: string]: skillModel } = {
   },
   'Express.js': {
     usable: 5
+  },
+  'Next.js': {
+    usable: 3
   },
   'Nuxt.js': {
     usable: 2
@@ -105,14 +116,14 @@ const frameWorkSkill: { [title: string]: skillModel } = {
 }
 
 
-function langSkillDatasets(): any[] {
+function LangSkillDatasets(): any[] {
   const result: any[] = [];
-  Object.entries(langSkill).forEach(([key, info]) => {
+  Object.entries(LangSkill).forEach(([key, info]) => {
     result.push({
       label: key,
       data: Object.values(info),
       backgroundColor: 'transparent',
-      borderColor: langColor[key] + 'AA',
+      borderColor: LangColor[key] + 'AA',
       borderWidth: 3,
     })
   })
@@ -121,25 +132,25 @@ function langSkillDatasets(): any[] {
 
 
 
-const labels = ['読める', '書ける', '使える'];
-const data = {
+const Labels = ['読める', '書ける', '使える'];
+const Data = {
   radar: {
-    labels: labels,
-    datasets: langSkillDatasets(),
+    labels: Labels,
+    datasets: LangSkillDatasets(),
   },
   horizonal: {
-    labels: Object.keys(frameWorkSkill),
+    labels: Object.keys(FrameWorkSkill),
     datasets: [
       {
-        label: labels[2],
-        data: Object.values(frameWorkSkill).map((x) => x.usable),
+        label: Labels[2],
+        data: Object.values(FrameWorkSkill).map((x) => x.usable),
         backgroundColor: 'rgb(171, 191, 191)',
       },
     ],
   }
 };
 
-const options = {
+const Options = {
   radar: {
     animation: false as false,
     scales: {
@@ -191,8 +202,8 @@ const SkillPage = () => {
       <article>
         <h2 className={page.title}>スキル</h2>
         <div className={page.skill_block}>
-          <Radar data={data.radar} options={options.radar} />
-          <Bar data={data.horizonal} options={options.horizonal}></Bar>
+          <Radar data={Data.radar} options={Options.radar} />
+          <Bar data={Data.horizonal} options={Options.horizonal}></Bar>
           <p className={page.small}>※ 1: ドキュメント見ながらつくれる, 10: ほかのひとに説明できるレベルで使いこなせる</p>
         </div>
       </article>
