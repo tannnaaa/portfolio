@@ -7,12 +7,11 @@
 }
 
 .line {
-  width: 1.5em;
+  width: 1px;
   height: 60vmin;
   background-color: $white;
   margin-right: 1.5em;
   &:nth-child(2){
-    width: 3.5em;
     height: 25vmin;
   }
 }
